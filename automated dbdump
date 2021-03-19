@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -x
+## Mention your mysql root password
+mysql_root_password=wordpress
+
+DATE=`date +%F-%H-%M-%S`
+
+docker exec fd13f8d282e6  mysqldump -u root -p$mysql_root_password wp > wp-$DATE.sql && echo "wp-$DATE has been created on `date`" >> database_backup.log
+
